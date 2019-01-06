@@ -1,0 +1,62 @@
+<div class="w3l_banner_nav_right">
+  <!-- login -->
+      <div class="w3_login">
+        <h3>Sign In & Sign Up</h3>
+        <div class="w3_login_onSubmitFormmodule">
+          <div class="module form-module">
+            <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+            <div class="tooltip">Click Me</div>
+            </div>
+            <div class="form">
+            <h2>Login to your account</h2>
+            <form (submit)="doLogin(myform)" #myform="ngForm">
+              {{msg}}
+              <div>
+              <input type="text" name="Username" ngModel placeholder="Username" required #myLName="ngModel">
+                <small *ngIf="myLName.errors?.required && myLName.touched">Please Enter your Name</small>
+            </div>
+            <div>
+              <input type="password" name="Password" ngModel placeholder="Password" required #myLPass="ngModel">
+              <small *ngIf="myLPass.errors?.required && myLPass.touched">Please Enter your Password</small>
+              
+            </div>
+              <input type="submit" [disabled]="myform.invalid" value="Login">
+            
+            </form>
+            </div>
+            <div class="form">
+            <h2>Create an account</h2>
+            <h4>{{msg}}</h4>
+            <form  #signup = "ngForm" (submit)="doRegister(signup)">
+              <div>
+              <input type="text" name="Username" ngModel placeholder="Username" required minlength="10" #myName="ngModel">
+              <small *ngIf="myName.errors?.required && myName.touched">Please enter the name</small>`
+              <small *ngIf="myName.errors?.minlength">Characters should be minimum 10 </small>
+            </div>
+            <div>
+              <input type="password" name="Password" ngModel placeholder="Password" #myPass="ngModel" required pattern="^(?=.*\d).{4,8}$">
+              <small *ngIf="myPass.errors?.required && myPass.touched">Please enter the pwd</small>    
+              <small *ngIf="myPass.errors?.pattern" >Password must be between 4 and 8 digits long and include at least one numeric digit.</small>
+            </div>
+            <div>
+              <input type="email" name="Email" ngModel placeholder="Email Address" #myMail="ngModel" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+              <small *ngIf="myMail.errors?.required && myMail.touched">Please enter Email</small>
+              <small *ngIf="myMail.errors?.pattern">please enter in mail(yyy@domain.com) format</small>
+            </div>
+            <div>
+              <input type="text" name="Phone" ngModel #myPhone="ngModel" placeholder="Phone Number" required minlength="10">
+              <small *ngIf="myPhone.errors?.required && myPhone.touched">Please enter phone number</small>
+              <small *ngIf="myPhone.errors?.minlength">please enter 10 digit number</small>
+            </div>
+              <input type="submit" [disabled]="signup.invalid" value="Register">
+            </form>
+            </div>
+            <div class="cta"><a href="#">Forgot your password?</a></div>
+          </div>
+        </div>
+       
+      </div>
+  <!-- //login -->
+      </div>
+      <div class="clearfix"></div>
+    
